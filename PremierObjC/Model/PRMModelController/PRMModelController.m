@@ -51,22 +51,16 @@ NSString* PRMMovieImageBaseURL          = @"https://image.tmdb.org/t/p/original"
         if ([strongSelf.outstandingRequest.userIdentifier isEqualToString:kRequestGetTopMovies]) {
             strongSelf.outstandingRequest = nil;
         }
-        
-        if (error) {
-            NSLog(@"Error received: %@", error);
-        }
-        else {
-            NSArray *arrayOfMovies = [PRMModelFactory moviesArrayFromDictionary:dict];
-            [strongSelf informDownloadCompletedWithResults:arrayOfMovies];
-        }
+        NSArray *arrayOfMovies = [PRMModelFactory moviesArrayFromDictionary:dict];
+        [strongSelf informDownloadCompletedWithResults:arrayOfMovies andError:error];
     }];
     self.outstandingRequest.userIdentifier = kRequestGetTopMovies;
 }
 
 #pragma mark Internal helper methods
-- (void) informDownloadCompletedWithResults:(NSArray*)results {
-    if ([self.delegate respondsToSelector:@selector(controller:searchEndedWithResults:)]) {
-        [self.delegate controller:self searchEndedWithResults:results];
+- (void) informDownloadCompletedWithResults:(NSArray*)results andError:(NSError*)error{
+    if ([self.delegate respondsToSelector:@selector(controller:searchEndedWithResults:andError:)]) {
+        [self.delegate controller:self searchEndedWithResults:results andError:error];
     }
 }
 

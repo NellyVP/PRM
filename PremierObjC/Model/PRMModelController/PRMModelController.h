@@ -14,7 +14,7 @@ extern NSString* PRMMovieImageBaseURL;
 
 
 @protocol PRMModelControllerDelegate <NSObject>
-- (void) controller:(PRMModelController*)controller searchEndedWithResults:(NSArray*)results;
+- (void) controller:(PRMModelController*)controller searchEndedWithResults:(NSArray*)results andError:(NSError*)error;
 @end
 
 

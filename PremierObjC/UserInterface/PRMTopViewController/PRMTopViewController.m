@@ -75,7 +75,6 @@ static const CGFloat kWarningHeight = 30.0f;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 - (void) addContentViewController:(UIViewController*)viewController {
     [self addChildViewController:viewController];

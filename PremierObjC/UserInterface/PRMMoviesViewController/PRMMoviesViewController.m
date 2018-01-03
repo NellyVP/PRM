@@ -18,7 +18,7 @@ static NSString* const kPRMMovieTableViewCell        = @"PRMMovieTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Top Movies";
+    self.title = NSLocalizedString(@"PRMMoviesViewControllerTitle", "Top Movies");
     [self.tableView registerNib:[UINib nibWithNibName:kPRMMovieTableViewCell bundle:nil] forCellReuseIdentifier:kPRMMovieTableViewCell];
 }
 
@@ -55,11 +55,23 @@ static NSString* const kPRMMovieTableViewCell        = @"PRMMovieTableViewCell";
     return tableCell;
 }
 
-- (void)controller:(PRMModelController *)controller searchEndedWithResults:(NSArray *)results {
-    self.movies = results;
-    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+- (void)controller:(PRMModelController *)controller searchEndedWithResults:(NSArray *)results andError:(NSError *)error {
     [self.firstRefreshHUD hideAnimated:YES];
     self.firstRefreshHUD = nil;
+    if (!error) {
+        self.movies = results;
+        [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    }
+    else {
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"PRMMoviesViewControllerErrorAlertTitle", @"Error") message:NSLocalizedString(@"PRMMoviesViewControllerErrorAlertMessage", @"Something went wrong")  preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okButton = [UIAlertAction actionWithTitle:NSLocalizedString(@"PRMMoviesViewControllerErrorAlertOKButtonTitle", @"OK")
+                                                           style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                                               [self dismissViewControllerAnimated:YES completion:nil];
+                                                           }];
+        [errorAlert addAction:okButton];
+        [self presentViewController:errorAlert animated:YES completion:nil];
+    }
+
 }
 
 

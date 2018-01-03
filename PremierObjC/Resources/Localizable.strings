@@ -19,7 +19,13 @@
 
 /*PRMServiceHandler*/
 
+
 /*PRMMoviesViewController*/
+"PRMMoviesViewControllerTitle" = "Top Movies";
+"PRMMoviesViewControllerErrorAlertTitle" = "Error";
+"PRMMoviesViewControllerErrorAlertMessage" = "Something went wrong while retrieving a list of top movies.";
+"PRMMoviesViewControllerErrorAlertOKButtonTitle" = "OK";
+
 
 /*PRMMovieTableCell*/
 

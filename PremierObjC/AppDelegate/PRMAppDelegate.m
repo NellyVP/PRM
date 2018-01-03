@@ -3,6 +3,9 @@
 #import "PRMTopViewController.h"
 #import "UINavigationBar+PRMNavBarStyle.h"
 
+static NSString* const kPRMTopViewController = @"PRMTopViewController";
+
+
 @interface PRMAppDelegate ()
 
 @end
@@ -18,7 +21,7 @@
     navigationController.navigationBar.translucent = NO;
     [navigationController.navigationBar updateNavBarStyle];
     
-    PRMTopViewController* baseViewController = [[PRMTopViewController alloc] initWithNibName:@"PRMTopViewController" bundle:nil];
+    PRMTopViewController* baseViewController = [[PRMTopViewController alloc] initWithNibName:kPRMTopViewController bundle:nil];
     baseViewController.contentViewController = navigationController;
     
     self.window.rootViewController = baseViewController;
