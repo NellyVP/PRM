@@ -40,7 +40,7 @@
                         <rect key="frame" x="130" y="11" width="174" height="167"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JxC-YY-g4x">
-                                <rect key="frame" x="0.0" y="8" width="87.5" height="20"/>
+                                <rect key="frame" x="0.0" y="8" width="88" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -51,10 +51,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljo-wr-WoI">
+                                <rect key="frame" x="0.0" y="103" width="105" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JxC-YY-g4x" firstAttribute="leading" secondItem="PFX-p1-VbT" secondAttribute="leading" id="G6v-Us-i5B"/>
+                            <constraint firstItem="lX8-kP-qYf" firstAttribute="top" secondItem="ljo-wr-WoI" secondAttribute="bottom" constant="15" id="GMp-QD-NSH"/>
                             <constraint firstAttribute="bottom" secondItem="lX8-kP-qYf" secondAttribute="bottom" constant="8" id="H5A-mf-M5M"/>
                             <constraint firstItem="lX8-kP-qYf" firstAttribute="leading" secondItem="PFX-p1-VbT" secondAttribute="leading" id="Se8-wm-RwQ"/>
                             <constraint firstItem="JxC-YY-g4x" firstAttribute="top" secondItem="PFX-p1-VbT" secondAttribute="top" constant="8" id="fdQ-6e-vVI"/>
@@ -65,6 +72,7 @@
                 <constraints>
                     <constraint firstItem="nDN-qj-5ea" firstAttribute="leading" secondItem="Rwz-mL-IfS" secondAttribute="leading" id="1YP-6m-omk"/>
                     <constraint firstItem="Rwz-mL-IfS" firstAttribute="top" secondItem="nDN-qj-5ea" secondAttribute="bottom" constant="23" id="4Mg-lH-FHy"/>
+                    <constraint firstItem="ljo-wr-WoI" firstAttribute="leading" secondItem="nDN-qj-5ea" secondAttribute="trailing" constant="8" id="Dka-Gj-HLc"/>
                     <constraint firstItem="Rwz-mL-IfS" firstAttribute="top" secondItem="PFX-p1-VbT" secondAttribute="bottom" constant="23" id="E23-24-jwK"/>
                     <constraint firstItem="nDN-qj-5ea" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Kx9-on-Oq5"/>
                     <constraint firstItem="PFX-p1-VbT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="MeG-Fo-L11"/>
@@ -80,6 +88,7 @@
                 <outlet property="movieImg" destination="nDN-qj-5ea" id="kun-2K-lyF"/>
                 <outlet property="movieOverview" destination="Rwz-mL-IfS" id="NS0-Qj-qM8"/>
                 <outlet property="movieRating" destination="lX8-kP-qYf" id="1Di-Uk-Aev"/>
+                <outlet property="movieReleaseDate" destination="ljo-wr-WoI" id="QuR-Lk-e6M"/>
                 <outlet property="movieTitle" destination="JxC-YY-g4x" id="gj6-Cb-loC"/>
             </connections>
             <point key="canvasLocation" x="-38" y="1"/>

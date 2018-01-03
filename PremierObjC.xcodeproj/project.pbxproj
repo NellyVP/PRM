@@ -128,8 +128,6 @@
 		1CE31A741FFBCCB600248A69 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				1CE31A8D1FFC43A000248A69 /* placeHolder.png */,
-				1CE31A8B1FFC3AD100248A69 /* rating.png */,
 				F81DFE491F8B914900528F3F /* UIKit+PRMStyles.h */,
 				F81DFE4A1F8B914900528F3F /* UIKit+PRMStyles.m */,
 			);
@@ -210,6 +208,25 @@
 			name = PRMMovieTableCell;
 			sourceTree = "<group>";
 		};
+		1CE31A931FFC666A00248A69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1CE31A701FFBCC7A00248A69 /* ModelFactory */,
+				1CE31A6C1FFBCC4600248A69 /* PRMModelController */,
+				1CE31A681FFBC48300248A69 /* PremierMovie */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1CE31A941FFC66C100248A69 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1CE31A8D1FFC43A000248A69 /* placeHolder.png */,
+				1CE31A8B1FFC3AD100248A69 /* rating.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		CAA335828080F3FB8665E472 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,13 +270,12 @@
 		F888BF2C1D86A6B300218030 /* PremierObjC */ = {
 			isa = PBXGroup;
 			children = (
-				1CE31A781FFBD04B00248A69 /* Networking */,
 				1CE31A751FFBCCC200248A69 /* AppDelegate */,
+				1CE31A781FFBD04B00248A69 /* Networking */,
 				1CE31A761FFBCCCA00248A69 /* UserInterface */,
-				1CE31A701FFBCC7A00248A69 /* ModelFactory */,
-				1CE31A6C1FFBCC4600248A69 /* PRMModelController */,
-				1CE31A681FFBC48300248A69 /* PremierMovie */,
+				1CE31A931FFC666A00248A69 /* Model */,
 				1CE31A741FFBCCB600248A69 /* Utilities */,
+				1CE31A941FFC66C100248A69 /* Resources */,
 				F888BF391D86A6B300218030 /* Assets.xcassets */,
 				F888BF3B1D86A6B300218030 /* LaunchScreen.storyboard */,
 				F888BF3E1D86A6B300218030 /* Info.plist */,
@@ -341,6 +357,7 @@
 				TargetAttributes = {
 					F888BF291D86A6B300218030 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 48F92RBXW5;
 						ProvisioningStyle = Automatic;
 					};
 					F888BF421D86A6B400218030 = {
@@ -646,6 +663,7 @@
 			baseConfigurationReference = 532037C0492243BF81050047 /* Pods-PremierObjC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 48F92RBXW5;
 				INFOPLIST_FILE = PremierObjC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = deliveroo.PremierObjC;
@@ -658,6 +676,7 @@
 			baseConfigurationReference = 95F43F620E67A93082B61481 /* Pods-PremierObjC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 48F92RBXW5;
 				INFOPLIST_FILE = PremierObjC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = deliveroo.PremierObjC;

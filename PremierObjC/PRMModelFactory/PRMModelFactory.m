@@ -25,18 +25,14 @@
         NSString* title =  [value isKindOfClass:[NSString class]] ? value : nil;
         
         value = [entry objectForKey:@"vote_average"];
-        NSNumber *avr_vote = [value isKindOfClass:[NSNumber class]] ? value : @"N/A";
+        NSNumber *avr_vote = [NSNumber numberWithFloat:[value floatValue]];
         
         value = [entry objectForKey:@"popularity"];
         NSNumber* popularity = [value isKindOfClass:[NSNumber class]] ? value : nil;
         
         value = [entry objectForKey:@"poster_path"];
-        UIImage *movieImage = nil;
         NSString* imgPath =  [value isKindOfClass:[NSString class]] ? value : nil;
-        if (imgPath.length) {
-            //movieImage = [[self class] imageFromPath:urlPath];
-        }
-        
+
         value = [entry objectForKey:@"release_date"];
         NSString* dateTimeString =  [value isKindOfClass:[NSString class]] ? value : @"N/A";
 
@@ -58,6 +54,13 @@
         if (topMoview) {
             [arrayOfMovies addObject:topMoview];
         }
+        
+        NSArray *sortedArray;
+        sortedArray = [arrayOfMovies sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+            NSNumber *first = [(PRMMovie*)a voteAverage];
+            NSNumber *second = [(PRMMovie*)b voteAverage];
+            return [first compare:second];
+        }];
     }
     
     return arrayOfMovies;

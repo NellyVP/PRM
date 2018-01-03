@@ -14,6 +14,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *movieTitle;
 @property (nonatomic, weak) IBOutlet UILabel *movieOverview;
 @property (nonatomic, weak) IBOutlet UILabel *movieRating;
+@property (nonatomic, weak) IBOutlet UILabel *movieReleaseDate;
 
 
 @end
@@ -30,17 +31,21 @@
 
 - (void) configureDisplay {
     self.movieTitle.font    = [UIFont titleFont];
-    self.movieOverview.font = [UIFont bodyFont];
     self.movieRating.font   = [UIFont bodyFont];
-    self.movieTitle.textColor    = [UIColor titleTextColor];
-    self.movieOverview.textColor = [UIColor bodyTextColor];
-    self.movieRating.textColor   = [UIColor bodyTextColor];
+    self.movieOverview.font = [UIFont bodyFont];
+    self.movieReleaseDate.font = [UIFont bodyFont];
+
+    self.movieTitle.textColor       = [UIColor titleTextColor];
+    self.movieOverview.textColor    = [UIColor bodyTextColor];
+    self.movieRating.textColor      = [UIColor bodyTextColor];
+    self.movieReleaseDate.textColor = [UIColor bodyTextColor];
 }
 
 - (void) configueWithitem:(PRMMovie*)movie {
     self.movieTitle.text        = movie.movieTitle;
     self.movieOverview.text     = movie.overview;
-    self.movieRating.text       = movie.voteAverage.stringValue;
+    self.movieRating.text       = [NSString stringWithFormat:@"Rating: %@", movie.voteAverage.stringValue];
+    self.movieReleaseDate.text  = [NSString stringWithFormat:@"Release Date: %@", movie.releaseDate];
 }
 
 
