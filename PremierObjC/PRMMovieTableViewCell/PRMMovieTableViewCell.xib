@@ -23,7 +23,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="379.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeHolder.png" translatesAutoresizingMaskIntoConstraints="NO" id="nDN-qj-5ea">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nDN-qj-5ea">
                         <rect key="frame" x="16" y="11" width="106" height="167"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="106" id="EzQ-P5-trK"/>
@@ -85,7 +85,4 @@
             <point key="canvasLocation" x="-38" y="1"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="placeHolder.png" width="225" height="225"/>
-    </resources>
 </document>

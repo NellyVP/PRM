@@ -10,6 +10,9 @@
 @class PRMModelController;
 @class PRMServiceHandler;
 
+extern NSString* PRMMovieImageBaseURL;
+
+
 @protocol PRMModelControllerDelegate <NSObject>
 - (void) controller:(PRMModelController*)controller searchEndedWithResults:(NSArray*)results;
 @end
@@ -17,8 +20,5 @@
 
 @interface PRMModelController : NSObject
 @property (nonatomic, weak) id<PRMModelControllerDelegate> delegate;
-
-- (NSData*) getImageDataFromPath:(NSString*)path;
-- (void) getImageDataFromPath:(NSString*)path withCompletion:(void (^)(NSData* data, NSError* error))completion;
 
 @end

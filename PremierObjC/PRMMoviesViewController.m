@@ -3,9 +3,12 @@
 #import "PRMMovieTableViewCell.h"
 #import "PRMMovie.h"
 #import "MBProgressHUD.h"
+#import "UIImageView+AFNetworking.h"
+
 
 @interface PRMMoviesViewController () <PRMModelControllerDelegate>
 @property (nonatomic, strong) PRMModelController *controller;
+@property (nonatomic, strong) MBProgressHUD* firstRefreshHUD;
 
 @property (nonatomic, copy) NSArray *movies;
 
@@ -21,10 +24,23 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+   
+    self.tableView.tableFooterView = [[UIView alloc]
+                                      initWithFrame:CGRectZero];
+    
+    self.firstRefreshHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.firstRefreshHUD.mode = MBProgressHUDModeIndeterminate;
     
     self.controller = [[PRMModelController alloc] init];
     self.controller.delegate = self;
 }
+
+- (void) viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.firstRefreshHUD hideAnimated:YES];
+    self.firstRefreshHUD = nil;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.movies.count;
 }
@@ -32,33 +48,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PRMMovieTableViewCell *tableCell = [tableView dequeueReusableCellWithIdentifier:@"PRMMovieTableViewCell" forIndexPath:indexPath];
     PRMMovie *movie = self.movies[indexPath.row];
-    [tableCell configueWithitem:movie];
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        NSData *imgData = [self.controller getImageDataFromPath:movie.imgPath];
-//        dispatch_sync(dispatch_get_main_queue(), ^{
-//            [tableCell updateImageViewWithImage:[UIImage imageWithData:imgData]];
-//        });
-//    });
-    return tableCell;
-}
+    [tableCell configueWithitem:movie];    
+    [tableCell.movieImg setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", PRMMovieImageBaseURL, movie.imgPath]]];
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([cell isKindOfClass:[PRMMovieTableViewCell class]] ) {
-        PRMMovieTableViewCell *tableCell = (PRMMovieTableViewCell*)cell;
-        PRMMovie *movie = self.movies[indexPath.row];
-        [tableCell configueWithitem:movie];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSData *imgData = [self.controller getImageDataFromPath:movie.imgPath];
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                [tableCell updateImageViewWithImage:[UIImage imageWithData:imgData]];
-            });
-        });
-    }
+    return tableCell;
 }
 
 - (void)controller:(PRMModelController *)controller searchEndedWithResults:(NSArray *)results {
     self.movies = results;
     [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    [self.firstRefreshHUD hideAnimated:YES];
+    self.firstRefreshHUD = nil;
 }
 
 

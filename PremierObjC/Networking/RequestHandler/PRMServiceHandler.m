@@ -23,6 +23,7 @@ static NSString* const PRMRequestTopMovies           = @"/3/movie/top_rated?api_
 static NSString* const PRMAPIKey                     = @"e4f9e61f6ffd66639d33d3dde7e3159b";
 
 NSString* PRMServiceConnectionChange      = @"PRMServiceConnectionChange";
+NSString* PRMServiceImagesBaseURL         = @"https://image.tmdb.org/t/p/original";
 
 //@"https://api.themoviedb.org/3/movie/top_rated?api_key=e4f9e61f6ffd66639d33d3dde7e3159b"
 

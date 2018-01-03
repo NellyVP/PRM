@@ -41,10 +41,7 @@
     self.movieTitle.text        = movie.movieTitle;
     self.movieOverview.text     = movie.overview;
     self.movieRating.text       = movie.voteAverage.stringValue;
-    self.movieImg.image         = nil;
 }
-- (void) updateImageViewWithImage:(UIImage*)image {
-    self.movieImg.image = image;
-}
+
 
 @end

@@ -11,6 +11,7 @@
 #import "PRMRequest.h"
 
 extern NSString* PRMServiceConnectionChange;
+extern NSString* PRMServiceImagesBaseURL;
 
 
 @interface PRMServiceHandler : NSObject

@@ -13,5 +13,5 @@
 @property (nonatomic, weak) IBOutlet UIImageView *movieImg;
 
 - (void) configueWithitem:(PRMMovie*)movie;
-- (void) updateImageViewWithImage:(UIImage*)image;
+
 @end
