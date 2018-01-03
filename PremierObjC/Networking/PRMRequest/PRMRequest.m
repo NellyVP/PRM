@@ -22,7 +22,6 @@ static NSMutableSet* outstandingRequests;
 @property (nonatomic, strong) NSError*         responseError;
 @property (nonatomic, strong) AFHTTPSessionManager* requestManager;
 @property (nonatomic, assign, readwrite) NSInteger responseCode;
-@property (nonatomic, assign) BOOL fakeRequest;
 @end
 
 @implementation PRMRequest
@@ -38,9 +37,8 @@ static NSMutableSet* outstandingRequests;
     if (self = [super init]) {
         _baseURL = baseURL;
         _type = kCMRequestTypeNotIssued;
-        _requestManager = [AFHTTPSessionManager manager];
+        [self prepareRequestManager];
         _requestManager.operationQueue.maxConcurrentOperationCount = 1;
-        _fakeRequest = NO;
     }
     return self;
 }
@@ -53,10 +51,8 @@ static NSMutableSet* outstandingRequests;
     _completion = completion;
     _type = kCMRequestTypeGET;
     _responseCode = 0;
-    _fakeRequest = NO;
     
     [self addToOutstanding];
-    [self prepareRequestManager];
     
     NSURL* absoluteURL = nil;
     if (![[_baseURL absoluteString] hasSuffix:@"/"] && ![_relativeURL hasPrefix:@"/"]) {
@@ -69,9 +65,6 @@ static NSMutableSet* outstandingRequests;
     [_requestManager GET:[absoluteURL absoluteString] parameters:body progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         typeof(self) __strong strongSelf = weakSelf;
         
-        if (responseObject) {
-           // NSAssert([responseObject isKindOfClass:[NSDictionary class]], @"Unexpected object type");
-        }
         [strongSelf updateResponseCodeForDataTask:task];
         strongSelf.responseInfo = responseObject;
         [strongSelf completeWithSuccess:responseObject];
@@ -92,10 +85,8 @@ static NSMutableSet* outstandingRequests;
     _completion = completion;
     _type = kCMRequestTypePOST;
     _responseCode = 0;
-    _fakeRequest = NO;
     
     [self addToOutstanding];
-    [self prepareRequestManager];
     
     typeof (self) __weak weakSelf = self;
     
@@ -130,10 +121,8 @@ static NSMutableSet* outstandingRequests;
     _completion = completion;
     _type = kCMRequestTypePUT;
     _responseCode = 0;
-    _fakeRequest = NO;
     
     [self addToOutstanding];
-    [self prepareRequestManager];
     
     typeof (self) __weak weakSelf = self;
     
@@ -165,10 +154,8 @@ static NSMutableSet* outstandingRequests;
     _completion = completion;
     _type = kCMRequestTypeDELETE;
     _responseCode = 0;
-    _fakeRequest = NO;
     
     [self addToOutstanding];
-    [self prepareRequestManager];
     
     typeof (self) __weak weakSelf = self;
     [_requestManager DELETE:[[_baseURL absoluteString] stringByAppendingPathComponent:_relativeURL] parameters:body success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -189,19 +176,7 @@ static NSMutableSet* outstandingRequests;
 }
 
 - (void) cancel {
-    if (_fakeRequest) {
-        _responseError = [NSError errorWithDomain:NSCocoaErrorDomain
-                                             code:NSUserCancelledError
-                                         userInfo:nil];
-        _responseCode = 0;
-        _responseInfo = nil;
-        [NSObject cancelPreviousPerformRequestsWithTarget:self];
-        [self performSelector:@selector(completeFakeRequest) withObject:nil afterDelay:0.01];
-    }
-    else {
-        [_requestManager.operationQueue cancelAllOperations];
-    }
-    
+    [_requestManager.operationQueue cancelAllOperations];
     NSError* cancelError = [NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:nil];
     [self performSelector:@selector(completeWithFailure:) withObject:cancelError afterDelay:0.1];
 }
@@ -209,9 +184,8 @@ static NSMutableSet* outstandingRequests;
 #pragma mark Helper methods
 
 - (void) addToOutstanding {
-    //    NSAssert(![outstandingRequests containsObject:self], @"Trying to add a duplicate request!");
     if (!outstandingRequests) {
-        outstandingRequests = [[NSMutableSet alloc] initWithCapacity:10]; // Why not 5??
+        outstandingRequests = [[NSMutableSet alloc] initWithCapacity:10];
     }
     if (![outstandingRequests containsObject:self]) {
         [outstandingRequests addObject:self];
@@ -230,23 +204,18 @@ static NSMutableSet* outstandingRequests;
         return;
     _completion(self, response, nil);
     _completion = nil;
+    [self.requestManager invalidateSessionCancelingTasks:YES];
     [self removeFromOutstanding];
 }
 
 - (void) completeWithFailure:(NSError*)error {
     if([error code] == NSURLErrorCancelled) {
-        return; // Ignore this error.
+        return;
     }
-    
-    /*
-     if timeout or 500 response.
-     Send failure notification.
-     */
     NSAssert(_responseError, @"Failing request with no error!");
     if (!_completion)
         return;
     if (_responseError.code != self.responseCode) {
-        // Update the error.
         _responseError = [NSError errorWithDomain:_responseError.domain
                                              code:_responseCode
                                          userInfo:_responseError.userInfo];
@@ -266,19 +235,14 @@ static NSMutableSet* outstandingRequests;
 
 - (void) prepareRequestManager {
     NSAssert(_baseURL, @"issueURLRequest - nil request");
-    
-    _requestManager.responseSerializer = [AFJSONResponseSerializer serializer];
-    _requestManager.requestSerializer =  [AFJSONRequestSerializer serializer];
-    [_requestManager.requestSerializer clearAuthorizationHeader];
-    _requestManager.securityPolicy.allowInvalidCertificates = YES;
-    _requestManager.securityPolicy.validatesDomainName = NO;
-}
-
-- (void) completeFakeRequest {
-    if (_responseError)
-        [self completeWithFailure:_responseError];
-    else
-        [self completeWithSuccess:_responseInfo];
+    if (!_requestManager) {
+        _requestManager = [AFHTTPSessionManager manager];
+        _requestManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        _requestManager.requestSerializer =  [AFJSONRequestSerializer serializer];
+        [_requestManager.requestSerializer clearAuthorizationHeader];
+        _requestManager.securityPolicy.allowInvalidCertificates = YES;
+        _requestManager.securityPolicy.validatesDomainName = NO;
+    }
 }
 
 @end

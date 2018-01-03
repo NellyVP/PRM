@@ -30,9 +30,11 @@ NSString* PRMMovieImageBaseURL          = @"https://image.tmdb.org/t/p/original"
 }
 
 - (instancetype) init {
-    _serviceHandler = [[PRMServiceHandler alloc] init];
-    [_serviceHandler activate];
-    [self getListOfTopMovies];
+    if (self = [super init]) {
+        _serviceHandler = [[PRMServiceHandler alloc] init];
+        [_serviceHandler activate];
+        [self getListOfTopMovies];
+    }
     return self;
 }
 
@@ -51,7 +53,7 @@ NSString* PRMMovieImageBaseURL          = @"https://image.tmdb.org/t/p/original"
         }
         
         if (error) {
-            NSLog(@"refreshConferenceSession error received: %@", error);
+            NSLog(@"Error received: %@", error);
         }
         else {
             NSArray *arrayOfMovies = [PRMModelFactory moviesArrayFromDictionary:dict];

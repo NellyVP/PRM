@@ -25,6 +25,10 @@
     [self configureDisplay];
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }
@@ -44,8 +48,8 @@
 - (void) configueWithitem:(PRMMovie*)movie {
     self.movieTitle.text        = movie.movieTitle;
     self.movieOverview.text     = movie.overview;
-    self.movieRating.text       = [NSString stringWithFormat:@"Rating: %@", movie.voteAverage.stringValue];
-    self.movieReleaseDate.text  = [NSString stringWithFormat:@"Release Date: %@", movie.releaseDate];
+    self.movieRating.text       = [NSString stringWithFormat:NSLocalizedString(@"PRMMovieTableCellRatingLabelText", @"Rating:"), movie.voteAverage.stringValue];
+    self.movieReleaseDate.text  = [NSString stringWithFormat:NSLocalizedString(@"PRMMovieTableCellReleaseDateLabelText", @"Release Date:"), movie.releaseDate];
 }
 
 

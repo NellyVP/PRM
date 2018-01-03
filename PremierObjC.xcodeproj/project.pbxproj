@@ -15,8 +15,15 @@
 		1CE31A841FFBD04B00248A69 /* PRMServiceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE31A811FFBD04B00248A69 /* PRMServiceHandler.m */; };
 		1CE31A891FFC056500248A69 /* PRMMovieTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE31A871FFC056500248A69 /* PRMMovieTableViewCell.m */; };
 		1CE31A8A1FFC056500248A69 /* PRMMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE31A881FFC056500248A69 /* PRMMovieTableViewCell.xib */; };
-		1CE31A8C1FFC3AD100248A69 /* rating.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CE31A8B1FFC3AD100248A69 /* rating.png */; };
-		1CE31A8E1FFC43A000248A69 /* placeHolder.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CE31A8D1FFC43A000248A69 /* placeHolder.png */; };
+		1CE31A9A1FFCF7B800248A69 /* topmovie.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CE31A971FFCF7B800248A69 /* topmovie.png */; };
+		1CE31A9C1FFCF7B800248A69 /* rating.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CE31A991FFCF7B800248A69 /* rating.png */; };
+		1CE31A9E1FFCFA2000248A69 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1CE31A9D1FFCFA2000248A69 /* Localizable.strings */; };
+		1CE31AA01FFD1CF100248A69 /* PRMModelFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE31A9F1FFD1CF100248A69 /* PRMModelFactoryTests.m */; };
+		1CE31AA31FFD1F0800248A69 /* GetMovieSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CE31AA21FFD1F0800248A69 /* GetMovieSuccess.json */; };
+		1CE31AA51FFD296400248A69 /* PRMModelControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE31AA41FFD296400248A69 /* PRMModelControllerTests.m */; };
+		1CE31AAA1FFD300C00248A69 /* PRMTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE31AA81FFD300C00248A69 /* PRMTopViewController.m */; };
+		1CE31AAB1FFD300C00248A69 /* PRMTopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CE31AA91FFD300C00248A69 /* PRMTopViewController.xib */; };
+		1CE31AAE1FFD39D400248A69 /* UINavigationBar+PRMNavBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE31AAD1FFD39D400248A69 /* UINavigationBar+PRMNavBarStyle.m */; };
 		AF8624FBF75EE6E4A5A3DA46 /* libPods-PremierObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46ABCAC5D195392644884FD1 /* libPods-PremierObjC.a */; };
 		E55935863D3534578F9840D9 /* libPods-PremierObjCTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C412115D898E8223FB2A38 /* libPods-PremierObjCTests.a */; };
 		F81DFE4B1F8B914900528F3F /* UIKit+PRMStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = F81DFE4A1F8B914900528F3F /* UIKit+PRMStyles.m */; };
@@ -40,23 +47,32 @@
 
 /* Begin PBXFileReference section */
 		070145B8736C3204A596B70B /* Pods-PremierObjCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PremierObjCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PremierObjCTests/Pods-PremierObjCTests.debug.xcconfig"; sourceTree = "<group>"; };
-		1CE31A691FFBC4AA00248A69 /* PRMMovie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PRMMovie.h; path = PremierMovie/PRMMovie.h; sourceTree = "<group>"; };
-		1CE31A6A1FFBC4AA00248A69 /* PRMMovie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PRMMovie.m; path = PremierMovie/PRMMovie.m; sourceTree = "<group>"; };
-		1CE31A6D1FFBCC6C00248A69 /* PRMModelController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PRMModelController.h; path = PRMModelController/PRMModelController.h; sourceTree = "<group>"; };
-		1CE31A6E1FFBCC6C00248A69 /* PRMModelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PRMModelController.m; path = PRMModelController/PRMModelController.m; sourceTree = "<group>"; };
-		1CE31A711FFBCC9300248A69 /* PRMModelFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PRMModelFactory.h; path = PRMModelFactory/PRMModelFactory.h; sourceTree = "<group>"; };
-		1CE31A721FFBCC9300248A69 /* PRMModelFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PRMModelFactory.m; path = PRMModelFactory/PRMModelFactory.m; sourceTree = "<group>"; };
+		1CE31A691FFBC4AA00248A69 /* PRMMovie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PRMMovie.h; sourceTree = "<group>"; };
+		1CE31A6A1FFBC4AA00248A69 /* PRMMovie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRMMovie.m; sourceTree = "<group>"; };
+		1CE31A6D1FFBCC6C00248A69 /* PRMModelController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PRMModelController.h; sourceTree = "<group>"; };
+		1CE31A6E1FFBCC6C00248A69 /* PRMModelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRMModelController.m; sourceTree = "<group>"; };
+		1CE31A711FFBCC9300248A69 /* PRMModelFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PRMModelFactory.h; sourceTree = "<group>"; };
+		1CE31A721FFBCC9300248A69 /* PRMModelFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRMModelFactory.m; sourceTree = "<group>"; };
 		1CE31A7A1FFBD04B00248A69 /* PRMRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRMRequest.h; sourceTree = "<group>"; };
 		1CE31A7B1FFBD04B00248A69 /* PRMRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRMRequest.m; sourceTree = "<group>"; };
 		1CE31A7D1FFBD04B00248A69 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		1CE31A7E1FFBD04B00248A69 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		1CE31A801FFBD04B00248A69 /* PRMServiceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRMServiceHandler.h; sourceTree = "<group>"; };
 		1CE31A811FFBD04B00248A69 /* PRMServiceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRMServiceHandler.m; sourceTree = "<group>"; };
-		1CE31A861FFC056500248A69 /* PRMMovieTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PRMMovieTableViewCell.h; path = PRMMovieTableViewCell/PRMMovieTableViewCell.h; sourceTree = "<group>"; };
-		1CE31A871FFC056500248A69 /* PRMMovieTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PRMMovieTableViewCell.m; path = PRMMovieTableViewCell/PRMMovieTableViewCell.m; sourceTree = "<group>"; };
-		1CE31A881FFC056500248A69 /* PRMMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PRMMovieTableViewCell.xib; path = PRMMovieTableViewCell/PRMMovieTableViewCell.xib; sourceTree = "<group>"; };
-		1CE31A8B1FFC3AD100248A69 /* rating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rating.png; path = Assets.xcassets/rating.png; sourceTree = "<group>"; };
-		1CE31A8D1FFC43A000248A69 /* placeHolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeHolder.png; path = Assets.xcassets/placeHolder.png; sourceTree = "<group>"; };
+		1CE31A861FFC056500248A69 /* PRMMovieTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PRMMovieTableViewCell.h; sourceTree = "<group>"; };
+		1CE31A871FFC056500248A69 /* PRMMovieTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRMMovieTableViewCell.m; sourceTree = "<group>"; };
+		1CE31A881FFC056500248A69 /* PRMMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PRMMovieTableViewCell.xib; sourceTree = "<group>"; };
+		1CE31A971FFCF7B800248A69 /* topmovie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topmovie.png; sourceTree = "<group>"; };
+		1CE31A991FFCF7B800248A69 /* rating.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rating.png; sourceTree = "<group>"; };
+		1CE31A9D1FFCFA2000248A69 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		1CE31A9F1FFD1CF100248A69 /* PRMModelFactoryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRMModelFactoryTests.m; sourceTree = "<group>"; };
+		1CE31AA21FFD1F0800248A69 /* GetMovieSuccess.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GetMovieSuccess.json; sourceTree = "<group>"; };
+		1CE31AA41FFD296400248A69 /* PRMModelControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRMModelControllerTests.m; sourceTree = "<group>"; };
+		1CE31AA71FFD300C00248A69 /* PRMTopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRMTopViewController.h; sourceTree = "<group>"; };
+		1CE31AA81FFD300C00248A69 /* PRMTopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRMTopViewController.m; sourceTree = "<group>"; };
+		1CE31AA91FFD300C00248A69 /* PRMTopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PRMTopViewController.xib; sourceTree = "<group>"; };
+		1CE31AAC1FFD39D400248A69 /* UINavigationBar+PRMNavBarStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UINavigationBar+PRMNavBarStyle.h"; path = "PRMNavigationBar/UINavigationBar+PRMNavBarStyle.h"; sourceTree = "<group>"; };
+		1CE31AAD1FFD39D400248A69 /* UINavigationBar+PRMNavBarStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UINavigationBar+PRMNavBarStyle.m"; path = "PRMNavigationBar/UINavigationBar+PRMNavBarStyle.m"; sourceTree = "<group>"; };
 		23C412115D898E8223FB2A38 /* libPods-PremierObjCTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PremierObjCTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46ABCAC5D195392644884FD1 /* libPods-PremierObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PremierObjC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		532037C0492243BF81050047 /* Pods-PremierObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PremierObjC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PremierObjC/Pods-PremierObjC.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,7 +120,7 @@
 				1CE31A691FFBC4AA00248A69 /* PRMMovie.h */,
 				1CE31A6A1FFBC4AA00248A69 /* PRMMovie.m */,
 			);
-			name = PremierMovie;
+			path = PremierMovie;
 			sourceTree = "<group>";
 		};
 		1CE31A6C1FFBCC4600248A69 /* PRMModelController */ = {
@@ -113,7 +129,7 @@
 				1CE31A6D1FFBCC6C00248A69 /* PRMModelController.h */,
 				1CE31A6E1FFBCC6C00248A69 /* PRMModelController.m */,
 			);
-			name = PRMModelController;
+			path = PRMModelController;
 			sourceTree = "<group>";
 		};
 		1CE31A701FFBCC7A00248A69 /* ModelFactory */ = {
@@ -122,7 +138,7 @@
 				1CE31A711FFBCC9300248A69 /* PRMModelFactory.h */,
 				1CE31A721FFBCC9300248A69 /* PRMModelFactory.m */,
 			);
-			name = ModelFactory;
+			path = ModelFactory;
 			sourceTree = "<group>";
 		};
 		1CE31A741FFBCCB600248A69 /* Utilities */ = {
@@ -130,8 +146,10 @@
 			children = (
 				F81DFE491F8B914900528F3F /* UIKit+PRMStyles.h */,
 				F81DFE4A1F8B914900528F3F /* UIKit+PRMStyles.m */,
+				1CE31AAC1FFD39D400248A69 /* UINavigationBar+PRMNavBarStyle.h */,
+				1CE31AAD1FFD39D400248A69 /* UINavigationBar+PRMNavBarStyle.m */,
 			);
-			name = Utilities;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		1CE31A751FFBCCC200248A69 /* AppDelegate */ = {
@@ -140,15 +158,16 @@
 				F888BF301D86A6B300218030 /* PRMAppDelegate.h */,
 				F888BF311D86A6B300218030 /* PRMAppDelegate.m */,
 			);
-			name = AppDelegate;
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 		1CE31A761FFBCCCA00248A69 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				1CE31AA61FFD300C00248A69 /* PRMTopViewController */,
 				1CE31A771FFBCCEC00248A69 /* PRMMoviesViewController */,
 			);
-			name = UserInterface;
+			path = UserInterface;
 			sourceTree = "<group>";
 		};
 		1CE31A771FFBCCEC00248A69 /* PRMMoviesViewController */ = {
@@ -158,7 +177,7 @@
 				F888BF331D86A6B300218030 /* PRMMoviesViewController.h */,
 				F888BF341D86A6B300218030 /* PRMMoviesViewController.m */,
 			);
-			name = PRMMoviesViewController;
+			path = PRMMoviesViewController;
 			sourceTree = "<group>";
 		};
 		1CE31A781FFBD04B00248A69 /* Networking */ = {
@@ -205,7 +224,7 @@
 				1CE31A871FFC056500248A69 /* PRMMovieTableViewCell.m */,
 				1CE31A881FFC056500248A69 /* PRMMovieTableViewCell.xib */,
 			);
-			name = PRMMovieTableCell;
+			path = PRMMovieTableCell;
 			sourceTree = "<group>";
 		};
 		1CE31A931FFC666A00248A69 /* Model */ = {
@@ -215,16 +234,35 @@
 				1CE31A6C1FFBCC4600248A69 /* PRMModelController */,
 				1CE31A681FFBC48300248A69 /* PremierMovie */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1CE31A941FFC66C100248A69 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1CE31A8D1FFC43A000248A69 /* placeHolder.png */,
-				1CE31A8B1FFC3AD100248A69 /* rating.png */,
+				1CE31A991FFCF7B800248A69 /* rating.png */,
+				1CE31A971FFCF7B800248A69 /* topmovie.png */,
+				1CE31A9D1FFCFA2000248A69 /* Localizable.strings */,
 			);
-			name = Resources;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1CE31AA11FFD1F0800248A69 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				1CE31AA21FFD1F0800248A69 /* GetMovieSuccess.json */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		1CE31AA61FFD300C00248A69 /* PRMTopViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1CE31AA71FFD300C00248A69 /* PRMTopViewController.h */,
+				1CE31AA81FFD300C00248A69 /* PRMTopViewController.m */,
+				1CE31AA91FFD300C00248A69 /* PRMTopViewController.xib */,
+			);
+			path = PRMTopViewController;
 			sourceTree = "<group>";
 		};
 		CAA335828080F3FB8665E472 /* Frameworks */ = {
@@ -251,10 +289,10 @@
 			isa = PBXGroup;
 			children = (
 				F888BF2C1D86A6B300218030 /* PremierObjC */,
+				CAA335828080F3FB8665E472 /* Frameworks */,
+				DF34C266985E8AFA7B7A8A1C /* Pods */,
 				F888BF461D86A6B400218030 /* PremierObjCTests */,
 				F888BF2B1D86A6B300218030 /* Products */,
-				DF34C266985E8AFA7B7A8A1C /* Pods */,
-				CAA335828080F3FB8665E472 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -271,15 +309,15 @@
 			isa = PBXGroup;
 			children = (
 				1CE31A751FFBCCC200248A69 /* AppDelegate */,
+				1CE31A931FFC666A00248A69 /* Model */,
 				1CE31A781FFBD04B00248A69 /* Networking */,
 				1CE31A761FFBCCCA00248A69 /* UserInterface */,
-				1CE31A931FFC666A00248A69 /* Model */,
-				1CE31A741FFBCCB600248A69 /* Utilities */,
 				1CE31A941FFC66C100248A69 /* Resources */,
-				F888BF391D86A6B300218030 /* Assets.xcassets */,
-				F888BF3B1D86A6B300218030 /* LaunchScreen.storyboard */,
-				F888BF3E1D86A6B300218030 /* Info.plist */,
+				1CE31A741FFBCCB600248A69 /* Utilities */,
 				F888BF2D1D86A6B300218030 /* Supporting Files */,
+				F888BF391D86A6B300218030 /* Assets.xcassets */,
+				F888BF3E1D86A6B300218030 /* Info.plist */,
+				F888BF3B1D86A6B300218030 /* LaunchScreen.storyboard */,
 			);
 			path = PremierObjC;
 			sourceTree = "<group>";
@@ -289,14 +327,17 @@
 			children = (
 				F888BF2E1D86A6B300218030 /* main.m */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		F888BF461D86A6B400218030 /* PremierObjCTests */ = {
 			isa = PBXGroup;
 			children = (
-				F888BF471D86A6B400218030 /* PremierObjCTests.m */,
+				1CE31AA11FFD1F0800248A69 /* Fixtures */,
 				F888BF491D86A6B400218030 /* Info.plist */,
+				F888BF471D86A6B400218030 /* PremierObjCTests.m */,
+				1CE31A9F1FFD1CF100248A69 /* PRMModelFactoryTests.m */,
+				1CE31AA41FFD296400248A69 /* PRMModelControllerTests.m */,
 			);
 			path = PremierObjCTests;
 			sourceTree = "<group>";
@@ -392,9 +433,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F888BF3D1D86A6B300218030 /* LaunchScreen.storyboard in Resources */,
-				1CE31A8E1FFC43A000248A69 /* placeHolder.png in Resources */,
+				1CE31A9A1FFCF7B800248A69 /* topmovie.png in Resources */,
+				1CE31AAB1FFD300C00248A69 /* PRMTopViewController.xib in Resources */,
+				1CE31A9C1FFCF7B800248A69 /* rating.png in Resources */,
+				1CE31A9E1FFCFA2000248A69 /* Localizable.strings in Resources */,
 				1CE31A8A1FFC056500248A69 /* PRMMovieTableViewCell.xib in Resources */,
-				1CE31A8C1FFC3AD100248A69 /* rating.png in Resources */,
 				F888BF3A1D86A6B300218030 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,6 +446,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CE31AA31FFD1F0800248A69 /* GetMovieSuccess.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,7 +564,9 @@
 				F81DFE4B1F8B914900528F3F /* UIKit+PRMStyles.m in Sources */,
 				F888BF321D86A6B300218030 /* PRMAppDelegate.m in Sources */,
 				F888BF2F1D86A6B300218030 /* main.m in Sources */,
+				1CE31AAA1FFD300C00248A69 /* PRMTopViewController.m in Sources */,
 				1CE31A831FFBD04B00248A69 /* Reachability.m in Sources */,
+				1CE31AAE1FFD39D400248A69 /* UINavigationBar+PRMNavBarStyle.m in Sources */,
 				1CE31A841FFBD04B00248A69 /* PRMServiceHandler.m in Sources */,
 				1CE31A821FFBD04B00248A69 /* PRMRequest.m in Sources */,
 			);
@@ -530,6 +576,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CE31AA01FFD1CF100248A69 /* PRMModelFactoryTests.m in Sources */,
+				1CE31AA51FFD296400248A69 /* PRMModelControllerTests.m in Sources */,
 				F888BF481D86A6B400218030 /* PremierObjCTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,6 +599,7 @@
 				F888BF3C1D86A6B300218030 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

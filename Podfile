@@ -13,6 +13,7 @@ target 'PremierObjC' do
   target 'PremierObjCTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'AFNetworking', '~> 3.1.0'
   end
 
 end

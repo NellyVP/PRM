@@ -5,11 +5,11 @@
 #import "MBProgressHUD.h"
 #import "UIImageView+AFNetworking.h"
 
+static NSString* const kPRMMovieTableViewCell        = @"PRMMovieTableViewCell";
 
 @interface PRMMoviesViewController () <PRMModelControllerDelegate>
 @property (nonatomic, strong) PRMModelController *controller;
 @property (nonatomic, strong) MBProgressHUD* firstRefreshHUD;
-
 @property (nonatomic, copy) NSArray *movies;
 
 @end
@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Top Movies";
-    [self.tableView registerNib:[UINib nibWithNibName:@"PRMMovieTableViewCell" bundle:nil] forCellReuseIdentifier:@"PRMMovieTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:kPRMMovieTableViewCell bundle:nil] forCellReuseIdentifier:kPRMMovieTableViewCell];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -39,6 +39,7 @@
     [super viewDidDisappear:animated];
     [self.firstRefreshHUD hideAnimated:YES];
     self.firstRefreshHUD = nil;
+    self.controller.delegate = nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -46,10 +47,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PRMMovieTableViewCell *tableCell = [tableView dequeueReusableCellWithIdentifier:@"PRMMovieTableViewCell" forIndexPath:indexPath];
+    PRMMovieTableViewCell *tableCell = [tableView dequeueReusableCellWithIdentifier:kPRMMovieTableViewCell forIndexPath:indexPath];
     PRMMovie *movie = self.movies[indexPath.row];
-    [tableCell configueWithitem:movie];    
-    [tableCell.movieImg setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", PRMMovieImageBaseURL, movie.imgPath]]];
+    [tableCell configueWithitem:movie];
+    [tableCell.movieImg setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", PRMMovieImageBaseURL, movie.imgPath]] placeholderImage:[UIImage imageNamed:@"topmovie.png"]];
 
     return tableCell;
 }

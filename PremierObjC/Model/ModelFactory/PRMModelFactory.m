@@ -9,13 +9,13 @@
 #import "PRMModelFactory.h"
 #import "PRMMovie.h"
 
-
-
 @implementation PRMModelFactory
 
 + (NSArray*) moviesArrayFromDictionary:(NSDictionary*)dict {
     NSAssert(dict, @"No dictionary supplied");
     NSMutableArray *arrayOfMovies = [[NSMutableArray alloc] initWithCapacity:dict.count];
+    NSArray *sortedArray = [[NSArray alloc] init];
+
     NSArray *moviesList = [dict objectForKey:@"results"];
     for (NSDictionary *entry in moviesList) {
         id value = [entry objectForKey:@"id"];
@@ -54,16 +54,13 @@
         if (topMoview) {
             [arrayOfMovies addObject:topMoview];
         }
-        
-        NSArray *sortedArray;
         sortedArray = [arrayOfMovies sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
             NSNumber *first = [(PRMMovie*)a voteAverage];
             NSNumber *second = [(PRMMovie*)b voteAverage];
-            return [first compare:second];
+            return [second compare:first];
         }];
     }
-    
-    return arrayOfMovies;
+    return sortedArray;
 }
 
 + (NSString*) languageNameForCode:(NSString*)code {
@@ -71,10 +68,4 @@
     return [locale displayNameForKey:NSLocaleIdentifier value:code];
 }
 
-//+ (UIImage*) imageFromPath:(NSString*)imgPath {
-//    NSString* newURL = [NSString stringWithFormat:@"%@%@",baseImageURLPath, imgPath];
-//    NSError* error = nil;
-//    NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:newURL] options:NSDataReadingUncached error:&error];
-//    return [UIImage imageWithData:data];
-//}
 @end

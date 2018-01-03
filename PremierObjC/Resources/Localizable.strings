@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  PremierObjC
+
+  Created by Nilofar Vahab poor on 03/01/2018.
+  Copyright © 2018 Deliveroo. All rights reserved.
+*/
+
+
+/*AppDelegate*/
+
+/*ModelFactory*/
+
+/*PRMModelController*/
+
+/*PRMMovie*/
+
+/*PRMRequest*/
+
+/*PRMServiceHandler*/
+
+/*PRMMoviesViewController*/
+
+/*PRMMovieTableCell*/
+
+"PRMMovieTableCellRatingLabelText" = "Rating: %@";
+"PRMMovieTableCellReleaseDateLabelText" = "Release Date: %@";
